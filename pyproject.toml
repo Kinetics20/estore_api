@@ -1,7 +1,9 @@
 [project]
 name = "estore-api"
 version = "0.1.0"
-description = "Add your description here"
+description = "A backend API for an e-commerce store built with FastAPI, SQLAlchemy, and PostgreSQL."
+authors = ["Piotr Lipinski <kinetics20@gmail.com>"]
+license = "Beerware"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
