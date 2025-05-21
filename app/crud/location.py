@@ -5,20 +5,19 @@ from app.db.models.inventory import InventoryItem
 from app.db.models.location import Location
 
 
-
 class LocationRepository:
     @staticmethod
-    def get(self, db: Session, location_id: int) -> Location | None:
+    def get(db: Session, location_id: int) -> Location | None:
         """Get a location by ID"""
         return db.query(Location).filter(Location.id == location_id).first()
 
     @staticmethod
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> list[type[Location]]:
+    def get_all(db: Session, skip: int = 0, limit: int = 100) -> list[type[Location]]:
         """Get all locations with pagination"""
         return db.query(Location).offset(skip).limit(limit).all()
 
     @staticmethod
-    def search(self, db: Session, term: str, skip: int = 0, limit: int = 100) -> list[type[Location]]:
+    def search(db: Session, term: str, skip: int = 0, limit: int = 100) -> list[type[Location]]:
         """Search locations by name or address"""
         return db.query(Location).filter(
             or_(
@@ -28,7 +27,7 @@ class LocationRepository:
         ).offset(skip).limit(limit).all()
 
     @staticmethod
-    def get_with_stock_count(self, db: Session, location_id: int) -> tuple[Location, int] | None:
+    def get_with_stock_count(db: Session, location_id: int) -> tuple[Location, int] | None:
         """
         Get a location with its current total stock count
         Returns tuple of (location, total_stock) or None if location not found
@@ -43,7 +42,6 @@ class LocationRepository:
             .scalar()
         )
         return location, stock_count
-
 
     @staticmethod
     def get_all_with_stock_counts(db: Session, skip: int = 0, limit: int = 100) -> list[tuple[Location, int]]:
@@ -79,10 +77,6 @@ class LocationRepository:
 
         return result
 
-
-
-
-
     @staticmethod
     def create(db: Session, name: str, address: str, capacity: int) -> Location:
         """Create a new location"""
@@ -96,7 +90,7 @@ class LocationRepository:
     def update(db: Session, location_id: int,
                name=None,
                address=None,
-               capacity=None):
+               capacity=None) -> Location | None:
         """Update a location"""
         location = LocationRepository.get(db, location_id)
         if not location:
@@ -124,5 +118,6 @@ class LocationRepository:
         db.delete(location)
         db.commit()
         return True
+
 
 location_repository = LocationRepository()
