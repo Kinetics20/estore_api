@@ -7,6 +7,19 @@
 
 The project is developed to solidify backend development skills and to simulate real-world scenarios, following clean architecture and modular design patterns.
 
+## Entity Relationship Diagram
+
+The diagram below illustrates the core database structure of the project. It consists of three main entities:
+
+- **products**: stores product information such as name, SKU, and price.
+- **locations**: represents physical storage locations with defined capacities.
+- **inventory_items**: a linking table tracking product quantities and restock levels at specific locations.
+
+This relational design ensures scalable inventory management across multiple storage sites.
+
+![estore_db_ER_diagram.jpg](assets/img/estore_db_ER_diagram.jpg)
+
+
 ## Features
 
 - 📦 **Product** and **Inventory** management
