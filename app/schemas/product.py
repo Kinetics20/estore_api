@@ -24,7 +24,3 @@ class ProductCreate(BaseModel):
         if value > 10000:
             raise ValueError('Price cannot exceed $10,000.')
         return value
-
-
-
-
