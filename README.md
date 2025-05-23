@@ -43,42 +43,44 @@ This relational design ensures scalable inventory management across multiple sto
 
 ```
 
-estore_api/
+estore\_api/
 ├── .venv/                        # Virtual environment (not tracked in Git)
 ├── app/
 │   ├── core/                     # Core configurations (settings, constants, utils)
 │   ├── crud/                     # CRUD repositories (SQLAlchemy-based database operations)
-│   │   ├── __init__.py
+│   │   ├── **init**.py
 │   │   ├── inventory.py          # Inventory-related DB operations
 │   │   ├── location.py           # Location-related DB operations
 │   │   └── product.py            # Product-related DB operations
 │   ├── db/
 │   │   ├── models/               # SQLAlchemy ORM models for all entities
-│   │   │   ├── __init__.py
+│   │   │   ├── **init**.py
 │   │   │   ├── inventory.py      # InventoryItem model
 │   │   │   ├── location.py       # Location model
 │   │   │   └── product.py        # Product model
-│   │   ├── __init__.py
+│   │   ├── **init**.py
 │   │   └── session.py            # Database engine and session configuration
 │   ├── routers/                  # FastAPI route declarations (API endpoints)
-│   │   ├── __init__.py           # Router registration (imports all subrouters)
-│   │   └── products.py           # Routes for managing product endpoints
+│   │   ├── **init**.py           # Router registration (imports all subrouters)
+│   │   ├── products.py           # Routes for managing product endpoints
+│   │   └── locations.py          # Routes for managing location endpoints
 │   ├── schemas/                  # Pydantic schemas for request and response validation
-│   │   ├── __init__.py
-│   │   └── main.py               # Schemas for products, locations, etc.
+│   │   ├── **init**.py
+│   │   ├── product.py            # Pydantic validators for product requests
+│   │   └── location.py           # Pydantic validators for location requests
 │   ├── assets/                   # Assets for documentation (ERD, images, diagrams)
 │   │   └── img/
-│   │       ├── estore_db_ER_diagram.jpg
-│   │       ├── estore_ERD.gif
-│   │       ├── estore_ERD.jpg
-│   │       └── estore_ERD.png
+│   │       ├── estore\_db\_ER\_diagram.jpg
+│   │       ├── estore\_ERD.gif
+│   │       ├── estore\_ERD.jpg
+│   │       └── estore\_ERD.png
 │   ├── fixtures/                 # Sample data for testing or development
-│   │   ├── __init__.py
-│   │   └── sample_data.json
+│   │   ├── **init**.py
+│   │   └── sample\_data.json
 │   ├── management/               # Administrative tools (e.g. DB setup utilities)
-│   │   ├── __init__.py
+│   │   ├── **init**.py
 │   │   ├── config.py             # App config loader
-│   │   └── database_utils.py     # Functions for initializing or seeding the database
+│   │   └── database\_utils.py     # Functions for initializing or seeding the database
 │   └── main.py                   # FastAPI entry point (app instance and startup logic)
 ├── .gitignore                    # Git ignore rules
 ├── .python-version               # Python version used in project
